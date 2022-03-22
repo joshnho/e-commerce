@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Navbar from './components/navbar/navbar';
-import Home from './routes/home/home';
-import Signin from './routes/auth/signin';
+import Navbar from './Components/navbar/navbar';
+import Home from './Routes/home/home';
+import Signin from './Routes/auth/signin';
 
 const Shop = () => {
   return <h1>Shop</h1>;
