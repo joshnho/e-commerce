@@ -16,7 +16,7 @@ const defaultFormFields = {
   confirmPassword: '',
 };
 
-const SignUpForm = () => {
+const SignUpForm = ({ switchForm }) => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
@@ -53,48 +53,42 @@ const SignUpForm = () => {
 
   return (
     <div className="sign-up-container">
-      <h2>Don't have an account?</h2>
-      <span>Sign up with your email and password</span>
+      <h2>Already have an account?</h2>
+      <span className="form-switch-link" onClick={switchForm}>
+        Login here
+      </span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
-          inputOptions={{
-            required: true,
-            name: 'displayName',
-            type: 'text',
-            value: displayName,
-            onChange: handleChange,
-          }}
+          required={true}
+          name="displayName"
+          type="text"
+          value={displayName}
+          onChange={handleChange}
         />
         <FormInput
           label="Email"
-          inputOptions={{
-            required: true,
-            name: 'email',
-            type: 'email',
-            value: email,
-            onChange: handleChange,
-          }}
+          required={true}
+          name="email"
+          type="email"
+          value={email}
+          onChange={handleChange}
         />
         <FormInput
           label="Password"
-          inputOptions={{
-            required: true,
-            name: 'password',
-            type: 'password',
-            value: password,
-            onChange: handleChange,
-          }}
+          required={true}
+          name="password"
+          type="password"
+          value={password}
+          onChange={handleChange}
         />
         <FormInput
           label="Confirm Password"
-          inputOptions={{
-            required: true,
-            name: 'confirmPassword',
-            type: 'confirmPassword',
-            value: confirmPassword,
-            onChange: handleChange,
-          }}
+          required={true}
+          name="confirmPassword"
+          type="password"
+          value={confirmPassword}
+          onChange={handleChange}
         />
         <Button type="submit">Sign Up</Button>
       </form>
