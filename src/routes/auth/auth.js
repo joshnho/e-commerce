@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import SignUpForm from '../../components/sign-up-form/sign-up-form';
-import SignInForm from '../../components/sign-in-form/sign-in-form';
+import SignUpForm from '../../Components/SignUpForm/SignUpForm';
+import SignInForm from '../../Components/SignInForm/SignInForm';
 
 import './auth.scss';
 
