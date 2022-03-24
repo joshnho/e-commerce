@@ -1,14 +1,19 @@
 import { useContext } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { signOutUser } from '../../utils/firebase/firebase.utils';
+
+import { UserContext } from '../../contexts/user';
+import { CartContext } from '../../contexts/cart';
 
 import { ReactComponent as CrwnLogo } from '../../assets/images/crown.svg';
-import { UserContext } from '../../contexts/user';
-import { signOutUser } from '../../utils/firebase/firebase.utils';
+import CartIcon from '../CartIcon/CartIcon';
+import CartDropdown from '../CartDropdown/CartDropdown';
 
 import './navbar.scss';
 
 const Navbar = () => {
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen } = useContext(CartContext);
 
   return (
     <>
@@ -18,7 +23,7 @@ const Navbar = () => {
         </Link>
         <div className="navbar-links-container">
           <Link className="navbar-link" to="/shop">
-            Shop
+            SHOP
           </Link>
           {currentUser ? (
             <Link className="navbar-link" to="login" onClick={signOutUser}>
@@ -26,12 +31,13 @@ const Navbar = () => {
             </Link>
           ) : (
             <Link className="navbar-link" to="/login">
-              Login
+              LOGIN
             </Link>
           )}
+          <CartIcon />
         </div>
+        {isCartOpen && <CartDropdown />}
       </div>
-      <Outlet />
     </>
   );
 };
