@@ -3,9 +3,9 @@ import { useState } from 'react';
 import SignUpForm from '../../Components/SignUpForm/SignUpForm';
 import SignInForm from '../../Components/SignInForm/SignInForm';
 
-import './auth.scss';
+import './login.scss';
 
-const Auth = () => {
+const Login = () => {
   const [hasAccount, setHasAccount] = useState(true);
 
   const handleClick = () => {
@@ -13,7 +13,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="login-container">
       {hasAccount ? (
         <SignUpForm switchForm={handleClick} />
       ) : (
@@ -23,4 +23,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default Login;
