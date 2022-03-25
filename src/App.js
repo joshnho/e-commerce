@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Navbar from './Components/Navbar/Navbar';
@@ -8,15 +9,15 @@ import Checkout from './routes/checkout/checkout';
 
 const App = () => {
   return (
-    <>
+    <Fragment>
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route exact path="/shop" element={<Shop />} />
+        <Route exact path="/shop/*" element={<Shop />} />
         <Route exact path="/login" element={<Auth />} />
         <Route exact path="/checkout" element={<Checkout />} />
       </Routes>
-    </>
+    </Fragment>
   );
 };
 
