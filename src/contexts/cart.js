@@ -2,16 +2,32 @@ import { useState, createContext, useEffect } from 'react';
 
 const addCartItem = (cartItems, productToAdd) => {
   const existingCartItem = cartItems.find(
-    (cartItem) => cartItem.id === productToAdd.id
+    (item) => item.id === productToAdd.id
   );
   if (existingCartItem) {
-    return cartItems.map((cartItem) =>
-      cartItem.id === productToAdd.id
-        ? { ...cartItem, quantity: cartItem.quantity + 1 }
-        : cartItem
+    return cartItems.map((item) =>
+      item.id === productToAdd.id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
     );
   }
   return [...cartItems, { ...productToAdd, quantity: 1 }];
+};
+
+const removeCartItem = (cartItems, cartItemToRemove) => {
+  const existingCartItem = cartItems.find(
+    (item) => item.id === cartItemToRemove.id
+  );
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter((item) => item.id !== cartItemToRemove.id);
+  }
+
+  return cartItems.map((item) =>
+    item.id === cartItemToRemove.id
+      ? { ...item, quantity: --item.quantity }
+      : item
+  );
 };
 
 export const CartContext = createContext({
@@ -27,25 +43,30 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
 
+  useEffect(() => {
+    const newCartCount = cartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    setCartCount(newCartCount);
+  }, [cartItems]);
+
   const addItemToCart = (productToAdd) => {
     setCartItems(addCartItem(cartItems, productToAdd));
+  };
+
+  const removeItemFromCart = (cartItemToRemove) => {
+    setCartItems(removeCartItem(cartItems, cartItemToRemove));
   };
 
   const value = {
     isCartOpen,
     setIsCartOpen,
     addItemToCart,
+    removeItemFromCart,
     cartItems,
     cartCount,
   };
-
-  useEffect(() => {
-    const newCartCount = cartItems.reduce(
-      (total, cartItem) => total + cartItem.quantity,
-      0
-    );
-    setCartCount(newCartCount);
-  }, [cartItems]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

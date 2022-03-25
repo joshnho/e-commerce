@@ -27,7 +27,7 @@ const Navbar = () => {
           </Link>
           {currentUser ? (
             <Link className="navbar-link" to="login" onClick={signOutUser}>
-              Logout
+              LOGOUT
             </Link>
           ) : (
             <Link className="navbar-link" to="/login">
