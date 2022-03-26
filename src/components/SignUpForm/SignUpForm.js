@@ -7,7 +7,7 @@ import {
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 
-import './sign-up-form.scss';
+import { SignUpContainer, FormToggle } from './signUpForm.styles';
 
 const defaultFormFields = {
   displayName: '',
@@ -52,11 +52,9 @@ const SignUpForm = ({ switchForm }) => {
   };
 
   return (
-    <div className="sign-up-container">
+    <SignUpContainer>
       <h2>Already have an account?</h2>
-      <span className="form-switch-link" onClick={switchForm}>
-        Login here
-      </span>
+      <FormToggle onClick={switchForm}>Login here</FormToggle>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
@@ -92,7 +90,7 @@ const SignUpForm = ({ switchForm }) => {
         />
         <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   );
 };
 

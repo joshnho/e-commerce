@@ -7,7 +7,11 @@ import {
 import FormInput from '../FormInput/FormInput';
 import Button from '../Button/Button';
 
-import './sign-in-form.scss';
+import {
+  SignInContainer,
+  FormToggle,
+  ButtonsContainer,
+} from './signInForm.styles';
 
 const defaultFormFields = {
   email: '',
@@ -52,11 +56,9 @@ const SignInForm = ({ switchForm }) => {
   };
 
   return (
-    <div className="sign-in-container">
+    <SignInContainer>
       <h2>Don't have an account?</h2>
-      <span className="form-switch-link" onClick={switchForm}>
-        Register here
-      </span>
+      <FormToggle onClick={switchForm}>Register here</FormToggle>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Email"
@@ -74,14 +76,14 @@ const SignInForm = ({ switchForm }) => {
           value={password}
           onChange={handleChange}
         />
-        <div className="buttons-container">
+        <ButtonsContainer>
           <Button type="submit">Sign in</Button>
           <Button type="button" onClick={signInWithGoogle} buttonType="google">
             Sign in with Google
           </Button>
-        </div>
+        </ButtonsContainer>
       </form>
-    </div>
+    </SignInContainer>
   );
 };
 
