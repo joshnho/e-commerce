@@ -5,7 +5,7 @@ import {
 } from '../../utils/firebase/firebase';
 
 import FormInput from '../FormInput/FormInput';
-import Button from '../Button/Button';
+import Button, { BUTTON_TYPE_CLASSES } from '../Button/Button';
 
 import {
   SignInContainer,
@@ -78,8 +78,12 @@ const SignInForm = ({ switchForm }) => {
         />
         <ButtonsContainer>
           <Button type="submit">Sign in</Button>
-          <Button type="button" onClick={signInWithGoogle} buttonType="google">
-            Sign in with Google
+          <Button
+            type="button"
+            onClick={signInWithGoogle}
+            buttonType={BUTTON_TYPE_CLASSES.google}
+          >
+            Google
           </Button>
         </ButtonsContainer>
       </form>
