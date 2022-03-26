@@ -7,7 +7,7 @@ import {
 const CategoryHomeItem = ({ category: { title, imageUrl } }) => {
   return (
     <CategoryHomeItemContainer>
-      <BackgroundImage style={{ backgroundImage: `url(${imageUrl})` }} />
+      <BackgroundImage imageUrl={imageUrl} />
       <CategoryHomeItemBody>
         <h2>{title.toUpperCase()}</h2>
         <p>SHOP NOW</p>
