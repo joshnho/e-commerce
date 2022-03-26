@@ -10,7 +10,7 @@ export const BackgroundImage = styled.div`
 
 export const CategoryHomeItemContainer = styled.div`
   min-width: 30%;
-  height: 240px;
+  height: 35em;
   flex: 1 1 auto;
   display: flex;
   align-items: center;
